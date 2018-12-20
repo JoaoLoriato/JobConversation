@@ -12,7 +12,7 @@ const formLogin = props => {
         </View>
         <View style={{ flex: 2 }}>
             <TextInput value={props.email} style={{ fontSize: 20, height: 45 }} placeholder='Email' onChangeText={texto => props.modificaEmail(texto)} />
-            <TextInput value={props.senha} style={{ fontSize: 20, height: 45 }} placeholder='Senha' onChangeText={texto => props.modificaSenha(texto)} />
+            <TextInput secureTextEntry={true} value={props.senha} style={{ fontSize: 20, height: 45 }} placeholder='Senha' onChangeText={texto => props.modificaSenha(texto)} />
             <TouchableHighlight onPress={() => Actions.formCadastro()}>
             <Text style={{ fontSize: 20 }}>Ainda não tem cadastro? Cadastre aqui</Text>
             </TouchableHighlight>

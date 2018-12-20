@@ -11,7 +11,7 @@ return (
         <View style={{ flex: 4, justifyContent: 'center' }}>
             <TextInput value={props.nome} placeholder="Nome" style={{ fontSize: 20, height: 45 }} onChangeText={texto => props.modificaNome(texto)} />
             <TextInput value={props.email} placeholder="E-mail" style={{ fontSize: 20, height: 45}} onChangeText={texto => props.modificaEmail(texto)} />
-            <TextInput value={props.senha} placeholder="Senha" style={{ fontSize: 20, height: 45}} onChangeText={texto => props.modificaSenha(texto)} />
+            <TextInput secureTextEntry={true} value={props.senha} placeholder="Senha" style={{ fontSize: 20, height: 45}} onChangeText={texto => props.modificaSenha(texto)} />
         </View>
         <View style={{ flex: 1 }}>
             <Button title="Cadastrar" color="#CD853F" onPress={() => false} />
