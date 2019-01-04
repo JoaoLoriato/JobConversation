@@ -37,5 +37,5 @@ const cadastroUsuarioSucesso = (dispatch) => {
 }
 
 const cadastrousuarioErro = (erro, dispatch) => {
-    dispatch( { type: 'erro' } );
+    dispatch( { type: 'cadastro_usuario_erro', payload: erro.message } );
 }

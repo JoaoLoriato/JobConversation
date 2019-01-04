@@ -1,7 +1,9 @@
 const INITIAL_STATE = {
     nome: '',
     email: '',
-    senha: ''
+    senha: '',
+    erroCadastro: ''
+
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,6 +15,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     if(action.type == 'modifica_nome'){
         return {...state, nome: action.payload}
+    }
+    if(action.type == 'cadastro_usuario_erro'){
+        return {...state, erroCadastro: action.payload}
     }
     return state;
 }
