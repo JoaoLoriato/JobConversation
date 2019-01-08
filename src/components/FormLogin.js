@@ -31,6 +31,10 @@ class formLogin extends Component {
             placeholder='Senha' 
             placeholderTextColor='#fff' 
             onChangeText={texto => this.props.modificaSenha(texto)} />
+            <Text 
+            style={{color: '#ff0000', fontSize: 18}}>
+                {this.props.erroLogin}
+            </Text>
             <TouchableHighlight 
             onPress={() => Actions.formCadastro()}>
             <Text 
@@ -53,7 +57,8 @@ const mapStateToProps = state => (
 
     {
         email: state.AutenticacaoReducer.email,
-        senha: state.AutenticacaoReducer.senha
+        senha: state.AutenticacaoReducer.senha,
+        erroLogin: state.AutenticacaoReducer.erroLogin
     }
 
 )
