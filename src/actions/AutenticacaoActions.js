@@ -59,6 +59,9 @@ const loginUsuarioSucesso = (dispatch) => {
     dispatch({
         type: 'login_usuario_sucesso'
     });
+
+    Actions.main();
+
 }
 
 const loginUsuarioErro = (erro, dispatch) => {
