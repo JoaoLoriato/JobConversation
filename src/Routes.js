@@ -4,7 +4,8 @@ import {Router, Scene, Stack} from 'react-native-router-flux';
 import FormLogin from './components/FormLogin';
 import FormCadastro from './components/FormCadastro';
 import Welcome from './components/Welcome';
-import Main from './components/Main'
+import Main from './components/Main';
+
 export default props => (
     <Router navigationBarStyle ={{backgroundColor: '#CD853F'}} titleStyle={{color: '#fff'}}>
         <Stack key="root">
