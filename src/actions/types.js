@@ -6,3 +6,4 @@ export const CADASTRO_USUARIO_ERRO = 'cadastro_usuario_erro';
 export const LOGIN_USUARIO_SUCESSO = 'login_usuario_sucesso';
 export const LOGIN_USUARIO_ERRO = 'login_usuario_erro';
 export const LOADING_USER = 'loading_user';
+export const LOADING_REGISTER = 'loading_register';

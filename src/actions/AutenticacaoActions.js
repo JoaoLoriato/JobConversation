@@ -8,7 +8,8 @@ CADASTRO_USUARIO_SUCESSO,
 CADASTRO_USUARIO_ERRO,
 LOGIN_USUARIO_SUCESSO,
 LOGIN_USUARIO_ERRO,
-LOADING_USER} from './types';
+LOADING_USER,
+LOADING_REGISTER} from './types';
 
 export const modificaEmail = (texto) => {
     return {
@@ -33,8 +34,11 @@ export const modificaNome = (texto) => {
 }
 
 export const cadastraUsuario = ({nome, email, senha}) => {
-
+    
     return dispatch => {
+
+        dispatch({type: LOADING_REGISTER});
+
         firebase.auth().createUserWithEmailAndPassword(email, senha)
             .then(user => { 
                 let emailB64 =b64.encode(email);
