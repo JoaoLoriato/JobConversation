@@ -2,19 +2,23 @@ import * as React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
-const FirstRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+const Chats = () => (
+  <View style={[styles.scene, { backgroundColor: '#ffffff' }]} />
 );
-const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+const Contacts = () => (
+  <View style={[styles.scene, { backgroundColor: '#ffffff' }]} />
+);
+const Tasks = () => (
+    <View style={[styles.scene, { backgroundColor: '#ffffff' }]} />
 );
 
 export default class Main extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', title: 'First' },
-      { key: 'second', title: 'Second' },
+      { key: 'first', title: 'CHATS' },
+      { key: 'second', title: 'CONTACTS' },
+      { key: 'third', title: 'TASKS'},
     ],
   };
 
@@ -23,8 +27,9 @@ export default class Main extends React.Component {
       <TabView
         navigationState={this.state}
         renderScene={SceneMap({
-          first: FirstRoute,
-          second: SecondRoute,
+          first: Chats,
+          second: Contacts,
+          third: Tasks,
         })}
         onIndexChange={index => this.setState({ index })}
         initialLayout={{ width: Dimensions.get('window').width }}
