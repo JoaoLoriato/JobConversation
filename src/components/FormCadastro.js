@@ -29,7 +29,7 @@ class formCadastro extends Component {
 
     render(){
 return (
-    <ImageBackground style={{flex: 1, width: null}} source={require('../imgs/bg.png')}>
+    <ImageBackground style={{flex: 1, width: null}} source={require('../imgs/bgregister.png')}>
     <View style={{ flex: 1, padding: 10 }}>
         <View style={{ flex: 4, justifyContent: 'center' }}>
             <TextInput 

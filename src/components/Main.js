@@ -1,16 +1,10 @@
 import * as React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-
-const Chats = () => (
-  <View style={[styles.scene, { backgroundColor: '#ffffff' }]} />
-);
-const Contacts = () => (
-  <View style={[styles.scene, { backgroundColor: '#ffffff' }]} />
-);
-const Tasks = () => (
-    <View style={[styles.scene, { backgroundColor: '#ffffff' }]} />
-);
+import { TabView, SceneMap } from 'react-native-tab-view';
+import TabBarMenu from './TabBarMenu';
+import Chats from './Chats';
+import Contacts from './Contacts';
+import Tasks from './Tasks';
 
 export default class Main extends React.Component {
   state = {
@@ -21,6 +15,8 @@ export default class Main extends React.Component {
       { key: 'third', title: 'TASKS'},
     ],
   };
+
+  renderTabBar = props => <TabBarMenu {...props} />
 
   render() {
     return (
