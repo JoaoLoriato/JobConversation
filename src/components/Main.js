@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import TabBarMenu from './TabBarMenu';
 import Chats from './Chats';
 import Contacts from './Contacts';
@@ -16,8 +16,9 @@ export default class Main extends React.Component {
     ],
   };
 
-  renderTabBar = props => <TabBarMenu {...props} />
+_renderHeader = props => <TabBarMenu {...props} />;
 
+  
   render() {
     return (
       <TabView
@@ -27,6 +28,7 @@ export default class Main extends React.Component {
           second: Contacts,
           third: Tasks,
         })}
+        renderTabBar={this._renderHeader}
         onIndexChange={index => this.setState({ index })}
         initialLayout={{ width: Dimensions.get('window').width }}
       />
