@@ -7,3 +7,4 @@ export const LOGIN_USUARIO_SUCESSO = 'login_usuario_sucesso';
 export const LOGIN_USUARIO_ERRO = 'login_usuario_erro';
 export const LOADING_USER = 'loading_user';
 export const LOADING_REGISTER = 'loading_register';
+export const MODIFY_ADD_CONTACT_EMAIL = 'modify_add_contact_email';
