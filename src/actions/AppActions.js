@@ -7,3 +7,9 @@ export const modifyAddContactEmail = texto => {
         payload: texto
     }
 }
+
+export const addContact = email => {
+    return {
+        type: ''
+    }
+}
