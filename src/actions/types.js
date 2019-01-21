@@ -9,3 +9,4 @@ export const LOADING_USER = 'loading_user';
 export const LOADING_REGISTER = 'loading_register';
 export const MODIFY_ADD_CONTACT_EMAIL = 'modify_add_contact_email';
 export const ADD_CONTACT_ERRO = 'add_contact_erro';
+export const ADD_CONTACT_SUCESSO = 'add_contact_sucesso';

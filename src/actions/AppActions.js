@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import b64 from 'base-64';
-import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO} from './types';
+import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO} from './types';
 import _ from 'lodash';
 
 export const modifyAddContactEmail = texto => {
@@ -32,7 +32,7 @@ export const addContact = email => {
 
                 firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
                 .push({email, nome: dadosUsuario[0].nome })
-                .then(() => console.log('Sucesso'))
+                .then(() => addContactSucesso(dispatch))
                 .catch(erro => addContactErro(erro.message, dispatch))
             }
             else{
@@ -54,6 +54,14 @@ const addContactErro = (erro, dispatch) => (
         {
             type: ADD_CONTACT_ERRO,
             payload: erro
+        }
+    )
+)
+
+const addContactSucesso = dispatch => (
+    dispatch (
+        {
+            type: ADD_CONTACT_SUCESSO
         }
     )
 )
