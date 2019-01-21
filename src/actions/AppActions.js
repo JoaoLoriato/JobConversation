@@ -33,7 +33,7 @@ export const addContact = email => {
                 firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
                 .push({email, nome: dadosUsuario[0].nome })
                 .then(() => console.log('Sucesso'))
-                .catch(erro => console.log(erro))
+                .catch(erro => addContactErro(erro.message, dispatch))
             }
             else{
                 dispatch(
@@ -46,4 +46,14 @@ export const addContact = email => {
         })
 
     }
+
 }
+
+const addContactErro = (erro, dispatch) => (
+    dispatch (
+        {
+            type: ADD_CONTACT_ERRO,
+            payload: erro
+        }
+    )
+)
