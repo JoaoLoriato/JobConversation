@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
         case ADD_CONTACT_ERRO:
             return {...state, cadastro_result_txt_erro: action.payload}
         case ADD_CONTACT_SUCESSO:
-            return {...state, cadastro_result_inclusao: true}
+            return {...state, cadastro_result_inclusao: action.payload, add_contact_email: ''}
         default:
             return state;
     }

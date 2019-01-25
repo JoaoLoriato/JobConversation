@@ -61,7 +61,15 @@ const addContactErro = (erro, dispatch) => (
 const addContactSucesso = dispatch => (
     dispatch (
         {
-            type: ADD_CONTACT_SUCESSO
+            type: ADD_CONTACT_SUCESSO,
+            payload: true
         }
     )
+)
+
+export const enableInclusionContact = () => (
+    {
+        type: ADD_CONTACT_SUCESSO,
+        payload: false
+    }
 )
