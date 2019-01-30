@@ -1,10 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, Text} from 'react-native';
+import {connect} from 'react-redux';
+import {contactUserFetch} from '../actions/AppActions';
 
-export default props => (
+class Contacts extends Component {
 
-    <View>
-        <Text>Contacts</Text>
-    </View>
+    componentWillMount(){
+        this.props.contactUserFetch();
+    }
 
-);
+
+    render(){
+        return(
+            <View>
+                <Text>Contacts</Text>
+            </View>
+        )
+    }
+    
+}
+
+export default connect(null, {contactUserFetch})(Contacts);
