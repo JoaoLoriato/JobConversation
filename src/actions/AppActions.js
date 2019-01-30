@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import b64 from 'base-64';
-import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO} from './types';
+import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER} from './types';
 import _ from 'lodash';
 
 export const modifyAddContactEmail = texto => {
@@ -73,3 +73,18 @@ export const enableInclusionContact = () => (
         payload: false
     }
 )
+
+export const contactUserFetch = () => {
+    const {currentUser} = firebase.auth();
+
+    return (dispatch) => {
+        let emailUserB64 = b64.encode (currentUser.email);
+
+        firebase.database().ref(`/usuario_contatos/${emailUserB64}`)
+        .on("value", snapshot =>{
+
+            dispatch({type: LIST_CONTACT_USER, payload: snapshot.val()})
+
+        })
+    }
+}
