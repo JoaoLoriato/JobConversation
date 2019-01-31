@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "base-64": "^0.1.0",
+    "cli": "^1.0.1",
     "firebase": "^3.9.0",
     "lodash": "^4.17.11",
     "react": "16.6.3",
