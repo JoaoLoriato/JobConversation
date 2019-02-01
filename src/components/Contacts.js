@@ -23,6 +23,11 @@ class Contacts extends Component {
 
     componentWillMount(){
         this.props.contactUserFetch();
+        console.log('recuperada via props: ', this.props.contacts);
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log('recuperando via props pós update', nextProps.contacts);
     }
 
 
@@ -41,9 +46,8 @@ mapStateToProps = state => {
     const contacts = _.map(state.ListContactsReducer, (val, uid) => {
         return {...val, uid}
     })
-    console.log(contacts);
     return {
-        
+        contacts: contacts
     }
 }
 
