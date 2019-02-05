@@ -18,10 +18,11 @@ class AddContact extends Component {
                     />
                     </View>
                     <View style={{flex: 1}}>
-                    <Button title="Add" color="#CD853F" onPress={() => this.props.addContact(this.props.add_contact_email)}/>
+                    <Button title="Add" color="#CD853F" onPress={() => this.props.addContact(this.props.add_contact_email)}
+                    />
                     <Text style={{color: '#ff0000', fontSize: 20}}>
-                    {this.props.cadastro_result_txt_erro}
-                    </Text>
+                        {this.props.cadastro_result_txt_erro}
+                        </Text>
                     </View>
                 </View>    
         )

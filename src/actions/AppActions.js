@@ -24,14 +24,12 @@ export const addContact = email => {
                 const dadosUsuario = _.first(_.values(snapshot.val()));
                 console.log(dadosUsuario);
 
-                //email
-
                 //email do usuário autenticado que deseja adicionar outro email
                 const {currentUser} = firebase.auth();
                 let emailUsuarioB64 = b64.encode(currentUser.email);
 
                 firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
-                .push({email, nome: dadosUsuario[0].nome })
+                .push({email, nome: dadosUsuario.nome })
                 .then(() => addContactSucesso(dispatch))
                 .catch(erro => addContactErro(erro.message, dispatch))
             }
@@ -75,16 +73,14 @@ export const enableInclusionContact = () => (
 )
 
 export const contactUserFetch = () => {
-    const {currentUser} = firebase.auth();
+    const { currentUser } = firebase.auth();
 
     return (dispatch) => {
-        let emailUserB64 = b64.encode (currentUser.email);
+        let emailUsuarioB64 = b64.encode( currentUser.email );
 
-        firebase.database().ref(`/usuario_contatos/${emailUserB64}`)
-        .on("value", snapshot =>{
-
-            dispatch({type: LIST_CONTACT_USER, payload: snapshot.val()})
-
-        })
+        firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
+            .on("value", snapshot => {
+                dispatch({ type: LIST_CONTACT_USER, payload: snapshot.val() })
+            })
     }
 }
