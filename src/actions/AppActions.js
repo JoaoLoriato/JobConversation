@@ -91,3 +91,9 @@ export const modifyMessage = texto => {
         payload: texto
     })
 }
+
+export const sendMessage = () => {
+    return ({
+        type: 'xyz'
+    })
+}

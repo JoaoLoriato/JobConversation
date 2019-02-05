@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, Image, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
-import {modifyMessage} from '../actions/AppActions'
+import {modifyMessage, sendMessage} from '../actions/AppActions'
 
 class Chat extends Component {
     render() {
@@ -16,7 +16,7 @@ class Chat extends Component {
                         onChangeText={texto => this.props.modifyMessage(texto)}
                         style={{flex: 4, backgroundColor: '#fff', fontSize: 18}}
                     />
-                    <TouchableHighlight onPress={() => false} underlayColor="#fff">
+                    <TouchableHighlight onPress={() => this.props.sendMessage(this.props.message)} underlayColor="#fff">
                         <Image source={require('../imgs/icon-send.png')} />
                     </TouchableHighlight>
 
@@ -32,4 +32,4 @@ mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {modifyMessage})(Chat)
+export default connect(mapStateToProps, {modifyMessage, sendMessage})(Chat)
