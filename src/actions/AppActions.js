@@ -92,7 +92,7 @@ export const modifyMessage = texto => {
     })
 }
 
-export const sendMessage = () => {
+export const sendMessage = (message, contactName, contactEmail) => {
     return ({
         type: 'xyz'
     })

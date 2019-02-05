@@ -4,6 +4,13 @@ import {connect} from 'react-redux';
 import {modifyMessage, sendMessage} from '../actions/AppActions'
 
 class Chat extends Component {
+
+    _sendMessage(){
+        const {message, contactName, contactEmail} = this.props;
+
+        this.props.sendMessage(message, contactName, contactEmail)
+    }
+
     render() {
         return (
             <View style={{flex:1, marginTop: 50, backgroundColor: '#eee4dc', padding: 10}}>
@@ -16,7 +23,7 @@ class Chat extends Component {
                         onChangeText={texto => this.props.modifyMessage(texto)}
                         style={{flex: 4, backgroundColor: '#fff', fontSize: 18}}
                     />
-                    <TouchableHighlight onPress={() => this.props.sendMessage(this.props.message)} underlayColor="#fff">
+                    <TouchableHighlight onPress={this._sendMessage.bind(this)} underlayColor="#fff">
                         <Image source={require('../imgs/icon-send.png')} />
                     </TouchableHighlight>
 

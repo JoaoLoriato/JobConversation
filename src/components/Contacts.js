@@ -26,7 +26,7 @@ class Contacts extends Component {
 {
     return (
         <TouchableHighlight
-            onPress={() => Actions.chat()}
+            onPress={() => Actions.chat({ title: contact.nome, contactName: contact.nome, contactEmail: contact.email})}
         >
         <View style={{flex: 1, padding: 20, borderBottomWidth: 1, borderColor: "#CCC" }}>
             <Text style={{fontSize: 25}}>{contact.nome}</Text>
