@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import b64 from 'base-64';
-import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER} from './types';
+import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER, MODIFY_MESSAGE} from './types';
 import _ from 'lodash';
 
 export const modifyAddContactEmail = texto => {
@@ -83,4 +83,11 @@ export const contactUserFetch = () => {
                 dispatch({ type: LIST_CONTACT_USER, payload: snapshot.val() })
             })
     }
+}
+
+export const modifyMessage = texto => {
+    return ({
+        type: MODIFY_MESSAGE,
+        payload: texto
+    })
 }
