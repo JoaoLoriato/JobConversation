@@ -37,7 +37,7 @@ class formLogin extends Component {
         <ImageBackground style={{flex: 1, width: null}} source={require('../imgs/bg.png')}>
     <View style={{ flex: 1, padding: 10 }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 25, color: '#fff' }}>Job Conversations</Text>
+            <Text style={{ fontSize: 25, color: '#fff' }}>Work Conversations</Text>
         </View>
         <View style={{ flex: 2 }}>
             <TextInput 

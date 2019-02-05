@@ -1,41 +1,39 @@
 import React, {Component} from 'react';
 import {View, Text, ListView} from 'react-native';
 import {connect} from 'react-redux';
+import _ from 'lodash'
 import {contactUserFetch} from '../actions/AppActions';
-import _ from 'lodash';
+
 
 class Contacts extends Component {
 
-    constructor(props){
-        super(props)
-
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-
-        this.state = {dataOfSource: ds.cloneWithRows([
-            'Registro 1',
-            'Registro 2',
-            'Registro 3',
-            'Registro 4'
-
-        ])}
-    }
-
-
     componentWillMount(){
         this.props.contactUserFetch();
-        console.log('recuperada via props: ', this.props.contacts);
+        this.createDataOfSource(this.props.contacts)
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('recuperando via props pós update', nextProps.contacts);
+        this.createDataOfSource(nextProps.contacts)
+    }
+
+    createDataOfSource(contacts){
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+        this.dataSource = ds.cloneWithRows(contacts)
     }
 
 
     render(){
         return(
             <ListView
-                dataSource={this.state.dataOfSource}
-                renderRow={data => <View><Text>{data}</Text></View>}
+                enableEmptySections
+                dataSource={this.dataSource}
+                renderRow={data => (
+                    <View style={{flex: 1, padding: 20, borderBottomWidth: 1, borderColor: "#CCC" }}>
+                        <Text style={{fontSize: 25}}>{data.nome}</Text>
+                        <Text style={{fontSize: 18}}>{data.email}</Text>
+                    </View>
+                    )
+                }
             />
         )
     }
@@ -44,11 +42,11 @@ class Contacts extends Component {
 
 mapStateToProps = state => {
     const contacts = _.map(state.ListContactsReducer, (val, uid) => {
-        return {...val, uid}
+        return { ...val, uid}
     })
     return {
-        contacts: contacts
+        contacts
     }
 }
 
-export default connect(null, {contactUserFetch})(Contacts);
+export default connect(mapStateToProps, {contactUserFetch})(Contacts);
