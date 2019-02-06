@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import b64 from 'base-64';
-import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER, MODIFY_MESSAGE, LIST_CHAT_USER} from './types';
+import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER, MODIFY_MESSAGE, LIST_CHAT_USER, SEND_MESSAGE_SUCCESS} from './types';
 import _ from 'lodash';
 
 export const modifyAddContactEmail = texto => {
@@ -109,7 +109,7 @@ export const sendMessage = (message, contactName, contactEmail) => {
             .then(() => {
                 firebase.database().ref(`/mensagens/${contactEmailB64}/${userEmailB64}`)
                     .push({message, type: 'r'})
-                    .then(() => dispatch ({type: 'xyz'}))
+                    .then(() => dispatch ({type: SEND_MESSAGE_SUCCESS}))
             })
             .then(() => { //armazenar os cabeçalhos do usuário autenticado
                 firebase.database().ref(`/usuario_conversas/${userEmailB64}/${contactEmailB64}`)
