@@ -93,7 +93,24 @@ export const modifyMessage = texto => {
 }
 
 export const sendMessage = (message, contactName, contactEmail) => {
-    return ({
-        type: 'xyz'
-    })
+    
+        //dados do usuario
+        const {currentUser} = firebase.auth();
+        const userEmail = currentUser.email;
+    
+    return dispatch => {
+    
+        //converter para base 64 de usuario
+        const userEmailB64 = b64.encode(userEmail)
+        const contactEmailB64 = b64.encode(contactEmail)
+
+        firebase.database().ref(`/mensagens/${userEmailB64}/${contactEmailB64}`)
+            .push({message, type: 's'})
+            .then(() => {
+                firebase.database().ref(`/mensagens/${contactEmailB64}/${userEmailB64}`)
+                    .push({message, type: 'r'})
+                    .then(() => dispatch ({type: 'xyz'}))
+            })
+
+    }
 }
