@@ -12,3 +12,4 @@ export const ADD_CONTACT_ERRO = 'add_contact_erro';
 export const ADD_CONTACT_SUCESSO = 'add_contact_sucesso';
 export const LIST_CONTACT_USER = 'list_contact_user';
 export const MODIFY_MESSAGE = 'modify_message';
+export const LIST_CHAT_USER = 'list_chat_user';
