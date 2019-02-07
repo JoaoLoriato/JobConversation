@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import b64 from 'base-64';
-import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER, MODIFY_MESSAGE, LIST_CHAT_USER, SEND_MESSAGE_SUCCESS} from './types';
+import {MODIFY_ADD_CONTACT_EMAIL, ADD_CONTACT_ERRO, ADD_CONTACT_SUCESSO, LIST_CONTACT_USER, MODIFY_MESSAGE, LIST_CHAT_USER, SEND_MESSAGE_SUCCESS, LIST_CHATS_USER} from './types';
 import _ from 'lodash';
 
 export const modifyAddContactEmail = texto => {
@@ -143,6 +143,19 @@ export const chatUserFetch = contactEmail => {
         firebase.database().ref(`/mensagens/${userEmailB64}/${contactEmailB64}`)
             .on("value", snapshot => {
                 dispatch({type: LIST_CHAT_USER, payload: snapshot.val()})
+            })
+    }
+}
+
+export const chatsUserFetch = () => {
+    const {currentUser} = firebase.auth();
+
+    return dispatch => {
+        let userEmailB64 = b64.encode(currentUser.email);
+
+        firebase.database().ref(`/usuario_conversas/${userEmailB64}`)
+            .on("value", snapshot => {
+                dispatch({type: LIST_CHATS_USER, payload: snapshot.val()})
             })
     }
 }

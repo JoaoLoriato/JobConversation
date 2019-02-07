@@ -12,6 +12,9 @@ class Chat extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        if(this.props.contactEmail != nextProps.contactEmail){
+            this.props.chatUserFetch(nextProps.contactEmail)
+        }
         this.createDataSource(nextProps.chat);
     }
 
@@ -50,8 +53,7 @@ class Chat extends Component {
                     enableEmptySections
                     dataSource={this.dataSource}
                     renderRow={this.renderRow}
-                />
-                    
+                />  
                 </View>
                 <View style={{flexDirection: 'row', height: 60}}>
                     <TextInput
@@ -62,7 +64,6 @@ class Chat extends Component {
                     <TouchableHighlight onPress={this._sendMessage.bind(this)} underlayColor="#fff">
                         <Image source={require('../imgs/icon-send.png')} />
                     </TouchableHighlight>
-
                 </View>
             </View>
         )

@@ -41,10 +41,6 @@ class formLogin extends Component {
                         <Text style={{ fontSize: 25, color: '#fff' }}>Work Conversations</Text>
                     </View>
                     <View style={{ flex: 2 }}>
-                        <KeyboardAwareScrollView
-                            resetScrollToCoords={{ x: 0, y: 0 }}
-                            scrollEnabled={false}
-                        >
                         <TextInput 
                         value={this.props.email} 
                         style={{ fontSize: 20, height: 45, color:'#fff' }} 
@@ -67,7 +63,6 @@ class formLogin extends Component {
                         <Text 
                         style={{ fontSize: 20, color:'#fff' }}>Ainda não tem cadastro? Cadastre aqui</Text>
                         </TouchableHighlight>
-                        </KeyboardAwareScrollView>
                     </View>
                     <View style={{ flex: 2 }}>
                         {this.renderBtnAcessar()}

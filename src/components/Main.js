@@ -7,6 +7,7 @@ import Contacts from './Contacts';
 import Tasks from './Tasks';
 
 export default class Main extends React.Component {
+
   state = {
     index: 0,
     routes: [
@@ -17,7 +18,6 @@ export default class Main extends React.Component {
   };
 
 _renderHeader = props => <TabBarMenu {...props} />;
-
   
   render() {
     return (
