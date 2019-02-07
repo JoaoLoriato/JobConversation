@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, ListView} from 'react-native';
-import { chatsUserFetch } from '../actions/AppActions';
+import {View, Text, ListView, TouchableHighlight} from 'react-native';
+import { chatsUserFetch, contactUserFetch } from '../actions/AppActions';
 import {connect} from 'react-redux';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 class Chats extends Component {
 
@@ -21,9 +22,13 @@ class Chats extends Component {
     }
     renderRow(chat){
         return(
+            <TouchableHighlight onPress={
+                () => Actions.chat({title: chat.name, contactName: chat.name, contactEmail: chat.email})
+            }>
             <View style={{flex: 1, padding: 20, borderBottomWidth: 1, borderColor: "#ccc"}}>
                 <Text style={{fontSize: 25}}>{chat.name}</Text>
             </View>
+            </TouchableHighlight>
         )
     } 
 
